@@ -1,0 +1,112 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  padding: 40px 20px; /* Adjusted padding */
+  margin-right:280px;
+}
+
+.login-card {
+  background-color: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 450px;
+  margin: auto; /* Centering */
+}
+
+
+  .login-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #334155;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .login-input-container {
+    margin-bottom: 2rem;
+  }
+
+  .login-label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 0.75rem;
+  }
+
+  .login-input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #1e293b;
+    background-color: #f9fafb;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.75rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .login-input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+  }
+
+  .login-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .login-button {
+    background-color: #4f46e5;
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .login-button:hover {
+    background-color: #4338ca;
+  }
+
+  .login-forgot-password {
+    color: #6366f1;
+    font-size: 1rem;
+    text-align: center;
+    transition: color 0.2s;
+  }
+
+  .login-forgot-password:hover {
+    color: #4f46e5;
+  }
+
+  .login-signup-container {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .login-signup-text {
+    font-size: 1.1rem;
+    color: #475569;
+  }
+
+  .login-signup-button {
+    color: #6366f1;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+
+  .login-signup-button:hover {
+    color: #4f46e5;
+  }

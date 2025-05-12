@@ -1,0 +1,147 @@
+:root {
+    --primary-bg: #f5f5f5;
+    --card-bg: #fff;
+    --border-color: #ddd;
+    --heading-color: #333;
+    --accent-color: #007bff;
+    --accent-hover: #0056b3;
+    --text-color: #888;
+    --font-large: 28px;
+    --padding: 20px;
+    --border-radius: 4px;
+    --transition-speed: 0.3s;
+  }
+  
+  /* Container for the whole schedule page */
+  .schedule-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  /* Main content area styling */
+  .main-content {
+    flex: 1;
+    padding: 50px;
+    margin-left: 20px;
+    background-color: var(--primary-bg);
+  }
+  
+  /* Title styling */
+  .title {
+    margin-bottom: var(--padding);
+    font-size: var(--font-large);
+    font-weight: bold;
+    color: var(--heading-color);
+  }
+  
+  /* Selection cards container */
+  .selection-cards {
+    display: flex;
+    gap: var(--padding);
+    margin-bottom: var(--padding);
+  }
+  
+  /* Individual card styling */
+  .card {
+    flex: 1;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: var(--padding);
+    text-align: center;
+    font-size: 18px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: box-shadow var(--transition-speed) ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Filters styling */
+  .filters {
+    display: flex;
+    gap: var(--padding);
+    margin-bottom: var(--padding);
+  }
+  
+  .filters select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+  }
+  
+  /* Table styling for exam calendar details */
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card-bg);
+  }
+  
+  .schedule-table th,
+  .schedule-table td {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+  }
+  
+  .schedule-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  /* No data message */
+  .no-data {
+    text-align: center;
+    padding: var(--padding);
+    color: var(--text-color);
+  }
+  
+  /* Back button styling */
+  .back-button {
+    margin-top: var(--padding);
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--accent-color);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease;
+  }
+  
+  .back-button:hover {
+    background-color: var(--accent-hover);
+  }
+  
+  /* Time Table Section */
+  .time-table {
+    background-color: var(--card-bg);
+    padding: var(--padding);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+  }
+  .logout-button {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .logout-icon {
+    width: 20px;
+    height: 20px;
+  }

@@ -1,0 +1,106 @@
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-right:280px;
+
+}
+
+.signup-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.signup-title {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  color: #333;
+  text-align: center;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px; /* Reduced height */
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+/* Enhancing the select field */
+.form-group select {
+  appearance: none; /* Removes default dropdown styling */
+  background-color: #fff;
+  cursor: pointer;
+  padding-right: 30px; /* Space for dropdown arrow */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='%23007bff'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+.signup-button {
+  width: 100%;
+  padding: 12px; /* Adjusted for consistency */
+  font-size: 1.1rem;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signup-button:hover {
+  background-color: #0056b3;
+}
+
+.login-prompt {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #777;
+  text-align: center;
+}
+
+.login-link {
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+
+}

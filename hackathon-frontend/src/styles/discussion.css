@@ -1,0 +1,130 @@
+/* discussion.css */
+
+.discussion-container {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .post-form-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+  }
+  
+  .submit-btn, .reply-btn, .delete-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .submit-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .reply-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .posts-container {
+    margin-top: 20px;
+  }
+  
+  .post {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .post-content {
+    margin: 10px 0;
+  }
+  
+  .post-footer {
+    font-size: 0.9em;
+    color: gray;
+  }
+  
+  .reply-section {
+    margin-top: 10px;
+  }
+  
+  .replies {
+    margin-top: 10px;
+    padding-left: 20px;
+    border-left: 2px solid #ddd;
+  }
+  
+  .reply {
+    background: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+  
+  .no-posts, .no-replies {
+    text-align: center;
+    color: gray;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .discussion-container {
+      flex-direction: column;
+    }
+  
+    .main-content {
+      padding: 10px;
+    }
+  
+    .post-form-container {
+      padding: 15px;
+    }
+  
+    .post {
+      padding: 10px;
+    }
+  
+    .input-field {
+      padding: 8px;
+    }
+  
+    .submit-btn, .reply-btn, .delete-btn {
+      padding: 8px;
+    }
+  }
+  

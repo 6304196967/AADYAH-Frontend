@@ -1,0 +1,128 @@
+.sidebar {
+    width: 280px; /* Fixed width for sidebar */
+    padding: 20px;
+    background: rgba(151, 147, 147, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--box-shadow);
+    margin-right: 20px; /* Space between sidebar and main content */
+    animation: slideInLeft 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between sections */
+  }
+  
+  .sidebar-title {
+    font-size: 1.5rem;
+    color: var(--title-color);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--tagline-color);
+    font-size: 1.125rem;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  }
+  
+  .sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--title-color);
+  }
+  
+  .sidebar-link.active {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: var(--title-color);
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Additional Content in Sidebar */
+  .sidebar-additional-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .additional-section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(5px);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .additional-section h2 {
+    font-size: 1.25rem;
+    color: var(--title-color);
+    margin-bottom: 0.75rem;
+  }
+  
+  .additional-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .additional-section ul li {
+    font-size: 1rem;
+    color: var(--tagline-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .additional-section p {
+    font-size: 1rem;
+    color: var(--tagline-color);
+    line-height: 1.5;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .sidebar {
+      width: 250px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      margin-right: 0;
+      padding: 15px;
+    }
+    .sidebar-nav {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .sidebar-link {
+      font-size: 1rem;
+      padding: 8px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sidebar-title {
+      font-size: 1.25rem;
+    }
+    .sidebar-link {
+      font-size: 0.875rem;
+      padding: 6px;
+    }
+    .additional-section {
+      padding: 10px;
+    }
+  }

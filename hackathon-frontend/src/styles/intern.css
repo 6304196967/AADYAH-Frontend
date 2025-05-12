@@ -1,0 +1,116 @@
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --secondary-color: #28a745;
+  --secondary-hover: #218838;
+  --background-color: #ffffff;
+  --card-bg: #f9f9f9;
+  --text-color: #333333;
+  --border-radius: 8px;
+  --transition: 0.3s;
+  --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  --nav-btn-bg: #e0e0e0;
+  --nav-btn-active-bg: #007bff;
+  --nav-btn-font-color: #333333;
+  --nav-btn-active-font-color: #ffffff;
+}
+
+/* Container for the portal content */
+.portal-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: var(--background-color);
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+}
+
+/* Navigation Tabs */
+.tab-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  background: var(--nav-btn-bg);
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  color: var(--nav-btn-font-color);
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.tab-btn:hover {
+  transform: translateY(-2px);
+}
+
+.tab-btn.active {
+  background: var(--nav-btn-active-bg);
+  color: var(--nav-btn-active-font-color);
+}
+
+/* Search Box */
+.search-box {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+/* Cards Container */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Individual Card */
+.card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08);
+  width: 250px;
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Buttons */
+.apply-btn, .join-btn {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #ffffff;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.apply-btn {
+  background: var(--primary-color);
+}
+
+.apply-btn:hover {
+  background: var(--primary-hover);
+}
+
+.join-btn {
+  background: var(--secondary-color);
+}
+
+.join-btn:hover {
+  background: var(--secondary-hover);
+}
