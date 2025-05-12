@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/6304196967/AADYAH-Frontend/static/css/main.62153fbd.css",
+    "main.js": "/6304196967/AADYAH-Frontend/static/js/main.ac03ce6b.js",
+    "index.html": "/6304196967/AADYAH-Frontend/index.html",
+    "main.62153fbd.css.map": "/6304196967/AADYAH-Frontend/static/css/main.62153fbd.css.map",
+    "main.ac03ce6b.js.map": "/6304196967/AADYAH-Frontend/static/js/main.ac03ce6b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.62153fbd.css",
+    "static/js/main.ac03ce6b.js"
+  ]
+}
