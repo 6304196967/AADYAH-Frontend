@@ -6,9 +6,6 @@ import Sidebar from "../Components/adminsidebar";
 function Signup() {
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate("/");
-  };
 
   const [formData, setFormData] = useState({
     username: "",
@@ -50,7 +47,6 @@ function Signup() {
         localStorage.setItem("role", formData.role ); 
   
         alert("Signup successful");
-        navigate("/");
       } else if (response.status === 400) {
         const errorData = await response.json();
         alert(errorData.message || "User already exists");
@@ -143,12 +139,7 @@ function Signup() {
             Sign Up
           </button>
         </form>
-        <p className="login-prompt">
-          Already have an account?
-          <Link to="/login" className="login-link">
-            Log in
-          </Link>
-        </p>
+       
       </div>
     </div>
   );

@@ -20,11 +20,12 @@ import { useState } from "react";
     
             if (response.ok) {
                 localStorage.setItem("token", data.token);
+                localStorage.setItem("username", data.username);
                 localStorage.setItem("role", data.role); 
                 
     
                 alert("Login successful");
-    
+              
                 if (data.role === "Admin") {
                     navigate("/admin/dashboard");
                 } else if (data.role === "Faculty") {
@@ -32,9 +33,9 @@ import { useState } from "react";
                 } else if (data.role === "Student") {
                   navigate("/student/dashboard");
                 }else if (data.role === "Club Coordinator") {
-                  navigate("/clubs/dashboard");
+                  navigate("/clubc/dashboard");
                 }else if (data.role === "Alumni") {
-                  navigate("/alumni/dashboard");
+                  navigate("/allumni/dashboard");
                 }else {
                     alert("Unauthorized role");
                 }
