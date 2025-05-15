@@ -151,7 +151,8 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    margin-left:13rem;
+    gap: 10px;
   }
   
   /* Welcome Section Styles */

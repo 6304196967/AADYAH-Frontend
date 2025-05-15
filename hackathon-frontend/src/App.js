@@ -28,13 +28,11 @@ import Salumni from "./Pages/Student/Alumni";
 import Sintern from "./Pages/Student/intern";
 
 import AlDashboard from "./Pages/Allumni/Dashboard";
-import Alschedule from "./Pages/Allumni/schedule";
 import Alclubs from "./Pages/Allumni/Clubs";
 import Aldiscussions from "./Pages/Allumni/Discussions";
 import Alalumni from "./Pages/Allumni/Alumni";
 
 import CDashboard from "./Pages/Club/Dashboard";
-import Cschedule from "./Pages/Club/schedule";
 import Cclubs from "./Pages/Club/Clubs";
 import Cdiscussions from "./Pages/Club/Discussions";
 import Calumni from "./Pages/Club/Alumni";
@@ -79,7 +77,6 @@ function App() {
         {/* Club Routes */}
         <Route path="/clubc" element={<CDashboard />} />
         <Route path="/clubc/dashboard" element={<CDashboard />} />
-        <Route path="/clubc/schedule" element={<Cschedule />} />
         <Route path="/clubc/clubs" element={<Cclubs />} />
         <Route path="/clubc/discussions" element={<Cdiscussions />} />
         <Route path="/clubc/alumni" element={<Calumni />} />
@@ -87,7 +84,6 @@ function App() {
         {/* Alumni Routes */}
         <Route path="/allumni" element={<AlDashboard />} />
         <Route path="/allumni/dashboard" element={<AlDashboard />} />
-        <Route path="/allumni/schedule" element={<Alschedule />} />
         <Route path="/allumni/clubs" element={<Alclubs />} />
         <Route path="/allumni/discussions" element={<Aldiscussions />} />
         <Route path="/allumni/alumni" element={<Alalumni />} />

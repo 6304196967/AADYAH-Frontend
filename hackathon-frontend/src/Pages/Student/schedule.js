@@ -1,86 +1,237 @@
-import React, { useState, useEffect } from "react";
-import "../../styles/ClubPage.css";
-import Sidebar from "../Components/studentsidebar";
+import { useState, useEffect } from "react";
+import "../Admin/schedule.css";
+import Sidebar from "../Components/studentsidebar"; 
 
-const ClubPage = () => {
-  const [clubs, setClubs] = useState([]);
-  const [selectedClub, setSelectedClub] = useState(null);
+const SchedulePage = () => {
+  const [viewMode, setViewMode] = useState("timeTable");
+  const [year, setYear] = useState("");
+  const [branch, setBranch] = useState("");
+  const [section, setSection] = useState("");
+  const [filteredTimeTable, setFilteredTimeTable] = useState([]);
+  const [filteredExamSchedule, setFilteredExamSchedule] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  // Fetch clubs from backend
+  // Fetch data when filters change
   useEffect(() => {
-    fetch("http://localhost:3000/api/clubs/all") // Replace with your actual backend endpoint
-      .then((res) => res.json())
-      .then((data) => setClubs(data))
-      .catch((err) => console.error("Error fetching clubs:", err));
-  }, []);
+    const fetchData = async () => {
+      if (!year || !branch) return;
+      
+      setIsLoading(true);
+      setError("");
+      
+      try {
+        if (viewMode === "examSchedule") {
+          const exams = await fetchExamSchedule(year, branch);
+          setFilteredExamSchedule(exams);
+        } else if (section) {
+          const schedule = await fetchTimeTable(year, branch, section);
+          setFilteredTimeTable(schedule);
+        }
+      } catch (err) {
+        setError("Failed to fetch schedule data");
+        console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  const handleCardClick = (club) => {
-    setSelectedClub(club);
+    fetchData();
+  }, [year, branch, section, viewMode]);
+
+  const fetchExamSchedule = async (year, branch) => {
+    const res = await fetch(`http://localhost:3000/api/schedule/exam-schedule/${year}/${branch}`);
+    if (!res.ok) throw new Error("Failed to fetch exam schedule");
+    const data = await res.json();
+    return data.exams || [];
+  };
+
+  const fetchTimeTable = async (year, branch, section) => {
+    const res = await fetch(`http://localhost:3000/api/schedule/time-table/${year}/${branch}/${section}`);
+    if (!res.ok) throw new Error("Failed to fetch timetable");
+    const data = await res.json();
+    return data.schedule || [];
   };
 
   return (
-    <div className="container">
+    <div className="schedule-container">
       <Sidebar />
-      <h2 className="title">College Clubs</h2>
-      <div className="club-list">
-        {clubs.length === 0 ? (
-          <p>Loading clubs...</p> // Show a loading message while fetching
-        ) : (
-          clubs.map((club) => (
-            <div
-              className={`club-card ${selectedClub && selectedClub.id === club.id ? "expanded" : ""}`}
-              key={club.id}
-              onClick={() => handleCardClick(club)}
+      <div className="main-content">
+        <div className="header">
+          <h2 className="title">
+            {viewMode === "timeTable" ? "View Timetable" : "View Exam Schedule"}
+          </h2>
+          <div className="view-toggle">
+            <button 
+              className={`toggle-btn ${viewMode === "timeTable" ? "active" : ""}`}
+              onClick={() => setViewMode("timeTable")}
+              disabled={isLoading}
             >
-              <img src={club.imageURL} alt={club.name} className="club-img" />
-              <div className="club-info">
-                <h3>{club.name}</h3>
-                <p>{club.description}</p>
-              </div>
-            </div>
-          ))
-        )}
-      </div>
-
-      {selectedClub && (
-        <div className="modal expanded-card">
-          <div className="modal-content">
-            <span className="close" onClick={() => setSelectedClub(null)}>&times;</span>
-            <h2>{selectedClub.name}</h2>
-            <p><strong>Description:</strong> {selectedClub.description}</p>
-            <p><strong>Total Students:</strong> {selectedClub.totalMembers}</p>
-            {selectedClub.studentsByYear && (
-              <>
-                <p><strong>Students co-ordinators by Year:</strong></p>
-                {Object.keys(selectedClub.studentsByYear).map((year) => (
-                  <div key={year}>
-                    <h4>{year}</h4>
-                    <table className="students-table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Branch</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {selectedClub.studentsByYear[year].map((student, index) => (
-                          <tr key={index}>
-                            <td>{student.name}</td>
-                            <td>{student.branch}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                ))}
-              </>
-            )}
-            <button className="join-btn" onClick={() => alert(`Joined ${selectedClub.name}`)}>Join Club</button>
+              Time Table
+            </button>
+            <button 
+              className={`toggle-btn ${viewMode === "examSchedule" ? "active" : ""}`}
+              onClick={() => setViewMode("examSchedule")}
+              disabled={isLoading}
+            >
+              Exam Schedule
+            </button>
           </div>
         </div>
+
+        {/* Filters */}
+        <div className="filters">
+          <select 
+            onChange={(e) => setYear(e.target.value)} 
+            value={year}
+            disabled={isLoading}
+          >
+            <option value="">Select Year</option>
+            {["1st", "2nd", "3rd", "4th"].map(y => (
+              <option key={y} value={y}>{y} Year</option>
+            ))}
+          </select>
+          <select 
+            onChange={(e) => setBranch(e.target.value)} 
+            value={branch}
+            disabled={isLoading}
+          >
+            <option value="">Select Branch</option>
+            {["CSE", "ECE", "EEE", "MECH", "CIVIL", "MME", "CHEM"].map(b => (
+              <option key={b} value={b}>{b}</option>
+            ))}
+          </select>
+          {viewMode === "timeTable" && (
+            <select 
+              onChange={(e) => setSection(e.target.value)} 
+              value={section}
+              disabled={isLoading}
+            >
+              <option value="">Select Section</option>
+              {["A", "B", "C", "D", "E"].map(s => (
+                <option key={s} value={s}>Section {s}</option>
+              ))}
+            </select>
+          )}
+        </div>
+
+        {error && <div className="error-message">{error}</div>}
+
+        {/* Schedule Display */}
+        {isLoading ? (
+          <div className="loading">Loading schedule data...</div>
+        ) : viewMode === "timeTable" ? (
+          <TimeTableView 
+            year={year}
+            branch={branch}
+            section={section}
+            data={filteredTimeTable}
+          />
+        ) : (
+          <ExamScheduleView 
+            year={year}
+            branch={branch}
+            data={filteredExamSchedule}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+
+// Subcomponents
+const TimeTableView = ({ year, branch, section, data }) => {
+  const [dayFilter, setDayFilter] = useState("All");
+
+  // Filter data based on selected day
+  const filteredData = dayFilter === "All" 
+    ? data 
+    : data.filter(item => item.day === dayFilter);
+
+  return (
+    <div className="time-table">
+      <div className="table-header">
+        <h3>Time Table Schedule {year && branch && section && `- ${year} ${branch} ${section}`}</h3>
+        <div className="day-filter">
+          <label>Filter by Day:</label>
+          <select 
+            value={dayFilter} 
+            onChange={(e) => setDayFilter(e.target.value)}
+          >
+            <option value="All">All Days</option>
+            {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].map(day => (
+              <option key={day} value={day}>{day}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+      
+      {filteredData.length > 0 ? (
+        <table className="schedule-table">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Subject</th>
+              <th>Time</th>
+              <th>Faculty</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredData.map((item, index) => (
+              <tr key={index}>
+                <td>{item.day}</td>
+                <td>{item.subject}</td>
+                <td>{item.time}</td>
+                <td>{item.faculty}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p className="no-data">
+          {dayFilter === "All" && data.length === 0
+            ? "No timetable found for the selected criteria"
+            : `No classes scheduled for ${dayFilter}`}
+        </p>
       )}
     </div>
   );
 };
 
-export default ClubPage;
+const ExamScheduleView = ({ year, branch, data }) => (
+  <div className="exam-calendar">
+    <h3>Exam Schedule {year && branch && `- ${year} ${branch}`}</h3>
+    {data.length > 0 ? (
+      <table className="schedule-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Subject Name</th>
+            <th>Subject Code</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((exam, index) => (
+            <tr key={index}>
+              <td>{new Date(exam.date).toLocaleDateString()}</td>
+              <td>{exam.subject}</td>
+              <td>{exam.subjectCode}</td>
+              <td>{exam.startTime}</td>
+              <td>{exam.endTime}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    ) : (
+      <p className="no-data">
+        {year && branch
+          ? "No exam schedule found for the selected criteria"
+          : "Please select year and branch"}
+      </p>
+    )}
+  </div>
+);
+
+export default SchedulePage;
