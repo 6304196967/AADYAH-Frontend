@@ -27,7 +27,7 @@ function App() {
   const fetchNotifications = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/api/noti/notifications");
+      const res = await fetch("https://aadyah-backend.onrender.com/api/noti/notifications");
       if (!res.ok) throw new Error("Failed to fetch notifications");
       const data = await res.json();
       setNotifications(data);
@@ -147,7 +147,7 @@ function App() {
       formDataToSend.append("role", role);
 
       const response = await fetch(
-        "http://localhost:3000/api/noti/notifications",
+        "https://aadyah-backend.onrender.com/api/noti/notifications",
         {
           method: "POST",
           body: formDataToSend,
@@ -180,7 +180,7 @@ function App() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        "http://localhost:3000/api/noti/notifications/${id}",
+        "https://aadyah-backend.onrender.com/api/noti/notifications/${id}",
         {
           method: "DELETE",
         }

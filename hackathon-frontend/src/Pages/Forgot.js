@@ -10,7 +10,7 @@ import { useState } from "react";
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await fetch("http://localhost:3000/api/user/forgot-password", { // Updated endpoint
+          const response = await fetch("https://aadyah-backend.onrender.com/api/user/forgot-password", { // Updated endpoint
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email }),

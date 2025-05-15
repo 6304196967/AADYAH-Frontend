@@ -43,14 +43,14 @@ const SchedulePage = () => {
   }, [year, branch, section, viewMode]);
 
   const fetchExamSchedule = async (year, branch) => {
-    const res = await fetch(`http://localhost:3000/api/schedule/exam-schedule/${year}/${branch}`);
+    const res = await fetch(`https://aadyah-backend.onrender.com/api/schedule/exam-schedule/${year}/${branch}`);
     if (!res.ok) throw new Error("Failed to fetch exam schedule");
     const data = await res.json();
     return data.exams || [];
   };
 
   const fetchTimeTable = async (year, branch, section) => {
-    const res = await fetch(`http://localhost:3000/api/schedule/time-table/${year}/${branch}/${section}`);
+    const res = await fetch(`https://aadyah-backend.onrender.com/api/schedule/time-table/${year}/${branch}/${section}`);
     if (!res.ok) throw new Error("Failed to fetch timetable");
     const data = await res.json();
     return data.schedule || [];
@@ -90,7 +90,7 @@ const SchedulePage = () => {
               i === editingRow ? editFormData : item) 
           };
 
-      const res = await fetch(`http://localhost:3000/api/schedule${endpoint}`, {
+      const res = await fetch(`https://aadyah-backend.onrender.com/api/schedule${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -135,7 +135,7 @@ const SchedulePage = () => {
         ? "/upload-time-table" 
         : "/upload-exam-schedule";
       
-      const res = await fetch(`http://localhost:3000/api/schedule${endpoint}`, {
+      const res = await fetch(`https://aadyah-backend.onrender.com/api/schedule${endpoint}`, {
         method: "POST",
         body: formData
       });
@@ -178,7 +178,7 @@ const SchedulePage = () => {
         ? { year, branch, section }
         : { year, branch };
 
-      const res = await fetch(`http://localhost:3000/api/schedule${endpoint}`, {
+      const res = await fetch(`https://aadyah-backend.onrender.com/api/schedule${endpoint}`, {
         method: "delete",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)

@@ -8,7 +8,7 @@ function App() {
   const [selectedNotification, setSelectedNotification] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/noti/notifications")
+    fetch("https://aadyah-backend.onrender.com/api/noti/notifications")
       .then((res) => res.json())
       .then((data) => setNotifications(data))
       .catch((err) => console.error("Error fetching notifications:", err));
