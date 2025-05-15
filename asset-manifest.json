@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/AADYAH-Frontend/static/css/main.2e73d042.css",
-    "main.js": "/AADYAH-Frontend/static/js/main.6719311b.js",
+    "main.css": "/AADYAH-Frontend/static/css/main.0d283280.css",
+    "main.js": "/AADYAH-Frontend/static/js/main.8a841a69.js",
     "index.html": "/AADYAH-Frontend/index.html",
-    "main.2e73d042.css.map": "/AADYAH-Frontend/static/css/main.2e73d042.css.map",
-    "main.6719311b.js.map": "/AADYAH-Frontend/static/js/main.6719311b.js.map"
+    "main.0d283280.css.map": "/AADYAH-Frontend/static/css/main.0d283280.css.map",
+    "main.8a841a69.js.map": "/AADYAH-Frontend/static/js/main.8a841a69.js.map"
   },
   "entrypoints": [
-    "static/css/main.2e73d042.css",
-    "static/js/main.6719311b.js"
+    "static/css/main.0d283280.css",
+    "static/js/main.8a841a69.js"
   ]
 }
